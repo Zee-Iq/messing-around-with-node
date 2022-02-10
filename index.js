@@ -9,6 +9,13 @@
 const luckyNum = Math.ceil(Math.random() * 100);
 
 global.luckyNum = luckyNum;
-console.log("global.luckyNum ", global.luckyNum);
+ console.log("global.luckyNum = luckyNum; ", global.luckyNum );
+ /* expected result = global.luckyNum = luckyNum;  86 */
 
 
+
+ /* 2. Understanding built in identifier called "process" */
+ /* "process" gives acess to currently running process  */
+
+ console.log(process.platform) 
+ /* When running node . -->  expected result = linux */
