@@ -26,3 +26,20 @@ console.log(process.platform);
                 This is why Node is ideal for intensive tasks with high input  output at the same time like real time apps or web servers
 
 */
+
+/* understanding node's filesystem */
+
+/* importing two functions from the filesystem module */
+/* the readFileSynch function will block sp */
+const { readFile, readFileSync } = require("fs");
+
+const txt = readFileSync("./hello.txt", "utf-8");
+console.log(txt);
+console.log("run this ASAP");
+/* when this is a large file... the second console log  will take some time to run becuase the txt file is being read
+How can this be avoided? --> with a callback --> this will make the code "non-blocking"
+*/
+
+readFile('./hello.txt', 'utf-8', (err,txt) => {
+    console.log(txt)
+})
