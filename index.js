@@ -40,6 +40,13 @@ console.log("run this ASAP");
 How can this be avoided? --> with a callback --> this will make the code "non-blocking"
 */
 
+
+/* This callback will be run last */
 readFile('./hello.txt', 'utf-8', (err,txt) => {
     console.log(txt)
 })
+
+const myModule = require('./my-module');
+console.log(myModule)
+
+const express = require('express')
