@@ -6,16 +6,16 @@
 /* Assigning the constant luckyNum to--> global.luckyNum = luckyNum --> 
     This allows the program to access the luckyNum from anywhere
 */
-const luckyNum = Math.ceil(Math.random() * 100);
+/* const luckyNum = Math.ceil(Math.random() * 100);
 
 global.luckyNum = luckyNum;
-console.log("global.luckyNum = luckyNum; ", global.luckyNum);
+console.log("global.luckyNum = luckyNum; ", global.luckyNum); */
 /* expected result = global.luckyNum = luckyNum;  86 */
 
 /* 2. Understanding built in identifier called "process" */
 /* "process" gives acess to currently running process  */
-
-console.log(process.platform);
+/* 
+console.log(process.platform); */
 /* When running node . -->  expected result = linux */
 
 /* 3. Understanding Node's eventloop and understanding what "non-blocking" means
@@ -31,22 +31,42 @@ console.log(process.platform);
 
 /* importing two functions from the filesystem module */
 /* the readFileSynch function will block sp */
-const { readFile, readFileSync } = require("fs");
+ const { readFile, readFileSync } = require("fs");
 
-const txt = readFileSync("./hello.txt", "utf-8");
+ const txt = readFileSync("./hello.txt", "utf-8");
 console.log(txt);
-console.log("run this ASAP");
+console.log("run this ASAP");  
 /* when this is a large file... the second console log  will take some time to run becuase the txt file is being read
 How can this be avoided? --> with a callback --> this will make the code "non-blocking"
 */
 
 
-/* This callback will be run last */
-readFile('./hello.txt', 'utf-8', (err,txt) => {
+/*  This callback will be run last  */
+ readFile('./hello.txt', 'utf-8', (err,txt) => {
     console.log(txt)
+}) 
+
+ const myModule = require('./my-module');
+console.log(myModule)
+ 
+const express = require('express')
+
+const app = express(); 
+
+/* sending HTML from server to client  */
+app.get('/', (request, response) => {
+    readFile('./home.html', 'utf8', (err,html) => {
+
+        if(err){
+            response.status(500).send('sorry, out of order')
+        }
+
+        response.send(html)
+    })
 })
 
-const myModule = require('./my-module');
-console.log(myModule)
 
-const express = require('express')
+/* telling express to start listening to incoming requests */
+/* defining port */
+
+app.listen(process.env.PORT || 3000, console.log(`App available on http://localhost:3000`))
