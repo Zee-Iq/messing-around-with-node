@@ -1,4 +1,3 @@
-/* test */
 
 /* Understanding the node runtime and it's identifiers */
 
