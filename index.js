@@ -1,3 +1,5 @@
+/* test */
+
 /* Understanding the node runtime and it's identifiers */
 
 /* 1. Understanding built in identifier called "global" */
@@ -61,7 +63,7 @@ app.get('/', (request, response) => {
             response.status(500).send('sorry, out of order')
         }
 
-        response.send(html)
+        response.send(htmprocessl)
     })
 })
 
